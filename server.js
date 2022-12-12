@@ -9,11 +9,13 @@ const connection = mongoose.connect(DB_HOST);
 
 connection
   .then(() => {
-    app.listen(PORT, () => {
-      console.log('Database connection successful')
+    app.listen(PORT, (err) => {
+      if (err) console.error('Error at server launch', err)
+      console.log(`Server running at port ${PORT}`)
     })
+    console.log(`Database connection successful`)
   })
   .catch(err => {
-    console.log(err.message);
+    console.log('Failed to launch application with error:', err.message);
     process.exit(1)
   })
