@@ -11,15 +11,15 @@ const updateStatusContact = async (req, res, next) => {
         throw HttpErr(400, "missing field favorite");
     }
 
-    try {
-        const { contactId } = req.params;
-        const { favorite } = req.body;
-        const result = await Contact.findByIdAndUpdate(contactId, { favorite }, { new: true });
-        res.status(200).json(result);
-    }
-    catch (err) {
+    const { contactId } = req.params;
+    const { favorite } = req.body;
+    const result = await Contact.findByIdAndUpdate(contactId, { favorite }, { new: true });
+      
+    if(!result){
         throw HttpErr(404, "Not found");
     }
+    
+    res.status(200).json(result);
 }
 
 module.exports = updateStatusContact;

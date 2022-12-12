@@ -2,14 +2,14 @@ const Contact = require('../../models/contacts.js')
 const {HttpErr} = require('../../helpers')
 
 const getContactById = async (req, res, next) => {  
-  try {
-    const { contactId } = req.params;
-    const result = await Contact.findById(contactId).exec();
-    res.json(result);
-  }
-  catch (err) {
+  const { contactId } = req.params;
+  const result = await Contact.findById(contactId);
+
+  if(!result) {
     throw HttpErr(404, "Not found");
   } 
+
+  res.json(result);
 }
 
 module.exports = getContactById;
