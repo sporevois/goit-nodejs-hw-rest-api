@@ -1,11 +1,11 @@
-const Contact = require('../../models/contacts.js');
-const schemas = require('../../schemas/contact');
+const {Contact} = require('../../models');
+const {updateStatusSchema} = require('../../schemas');
 const { HttpErr } = require('../../helpers');
 
 
 const updateStatusContact = async (req, res, next) => {
     
-    const { error } = schemas.updateStatusSchema.validate(req.body);
+    const { error } = updateStatusSchema.validate(req.body);
 
     if (error) {
         throw HttpErr(400, "missing field favorite");
@@ -18,7 +18,7 @@ const updateStatusContact = async (req, res, next) => {
     if(!result){
         throw HttpErr(404, "Not found");
     }
-    
+
     res.status(200).json(result);
 }
 
