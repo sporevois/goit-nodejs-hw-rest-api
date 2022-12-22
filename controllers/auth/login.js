@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken');
 
 const { HttpErr } = require('../../helpers');
 const { User } = require('../../models');
-const { findByIdAndUpdate } = require('../../models/users');
 const { loginSchema } = require('../../schemas')
 const { JWT_SECRET } = process.env;
 
