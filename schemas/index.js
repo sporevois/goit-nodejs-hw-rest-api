@@ -1,8 +1,9 @@
 const { contactSchema, updateStatusSchema } = require('./contact');
-const {signupSchema} = require('./user')
+const {signupSchema, loginSchema} = require('./user')
 
 module.exports = {
     contactSchema,
     updateStatusSchema,
     signupSchema,
+    loginSchema,
 }
