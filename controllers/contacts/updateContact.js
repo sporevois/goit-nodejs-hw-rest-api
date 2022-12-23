@@ -2,7 +2,7 @@ const {Contact} = require('../../models');
 const {HttpErr} = require('../../helpers');
 const {contactSchema} = require('../../schemas');
 
-const updateContact = async (req, res, next) => {
+const updateContact = async (req, res) => {
  
   const {error} = contactSchema.validate(req.body);
     
@@ -15,7 +15,7 @@ const updateContact = async (req, res, next) => {
   const result = await Contact.findOneAndUpdate({_id:contactId, owner: ownerId}, { $set: { name, email, phone } }, { new: true });
    
   if (!result) {
-    throw HttpErr(404, "Not found");
+    throw HttpErr(404);
   }
 
   res.status(200).json(result);  

@@ -6,7 +6,7 @@ const { User } = require('../../models');
 const { loginSchema } = require('../../schemas')
 const { JWT_SECRET } = process.env;
 
-const login= async (req, res, next) => {
+const login= async (req, res) => {
 
     const { error } = loginSchema.validate(req.body);
     if (error) {

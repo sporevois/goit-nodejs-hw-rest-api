@@ -2,7 +2,7 @@ const {Contact} = require('../../models');
 const {HttpErr} = require('../../helpers');
 const {contactSchema} = require('../../schemas')
 
-const addContact = async (req, res, next) => {
+const addContact = async (req, res) => {
   const { error } = contactSchema.validate(req.body);
 
   if (error) {
