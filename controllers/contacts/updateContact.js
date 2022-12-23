@@ -9,10 +9,10 @@ const updateContact = async (req, res, next) => {
   if (error) {
     throw HttpErr(400, "Missing fields")
   }
-  
+  const {_id: ownerId} = req.user;
   const { contactId } = req.params;
   const { name, email, phone } = req.body;
-  const result = await Contact.findByIdAndUpdate(contactId, { $set: { name, email, phone } }, { new: true });
+  const result = await Contact.findOneAndUpdate({_id:contactId, owner: ownerId}, { $set: { name, email, phone } }, { new: true });
    
   if (!result) {
     throw HttpErr(404, "Not found");
