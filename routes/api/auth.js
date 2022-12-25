@@ -13,6 +13,8 @@ router.get('/logout', authentication, ctrlWrapper(ctrl.logout));
 
 router.get('/current', authentication, ctrlWrapper(ctrl.getCurrentUser));
 
+router.patch('/', authentication, ctrlWrapper(ctrl.updateSubscription))
+
 
 
 module.exports = router;
