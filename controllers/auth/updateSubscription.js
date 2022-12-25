@@ -12,8 +12,6 @@ const updateSubscription = async (req, res) => {
     const { subscription } = req.body;
     const { _id: userId } = req.user;
 
-    console.log(subscription)
-
     const user = await User.findByIdAndUpdate({_id:userId}, { subscription }, { new: true });
 
     if (!user) {
