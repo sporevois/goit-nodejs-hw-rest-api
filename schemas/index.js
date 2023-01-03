@@ -1,6 +1,10 @@
-const {contactSchema, updateStatusSchema} = require('./contact')
+const { contactSchema, updateStatusSchema } = require('./contact');
+const {signupSchema, loginSchema, subscriptionSchema} = require('./user')
 
 module.exports = {
     contactSchema,
-    updateStatusSchema
+    updateStatusSchema,
+    signupSchema,
+    loginSchema,
+    subscriptionSchema,
 }
