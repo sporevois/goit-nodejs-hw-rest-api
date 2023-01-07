@@ -2,7 +2,6 @@ const Jimp = require('jimp');
 const { HttpErr } = require('../helpers');
 
 const resizeImage = async (req, _, next) => {
-console.log(req.file)
     try {
         const { path } = req.file;
         
@@ -12,7 +11,7 @@ console.log(req.file)
             .write(path)          
         next();
 
-    } catch (err) {
+    } catch (error) {
         next(HttpErr(400, 'No image uploaded'))
     }
 }
