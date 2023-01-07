@@ -12,7 +12,7 @@ const loginSchema = Joi.object({
 })
 
 const subscriptionSchema = Joi.object({
-  subscription: Joi.string().valid("starter", "pro", "business").required(),
+    subscription: Joi.string().valid("starter", "pro", "business").required(),
 });
 
 module.exports = {
