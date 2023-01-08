@@ -17,8 +17,10 @@ describe("test login", () => {
         mongoose.connect(DB_TEST_HOST).then(()=> done())
     })
 
-    afterEach((done) => {
-        mongoose.connection.close(() => done())
+     afterEach((done)=> {
+         mongoose.connection.db.dropCollection('users', () => {
+             mongoose.connection.close(() => done())
+         })
     })
 
     test("test login route", async()=> {
