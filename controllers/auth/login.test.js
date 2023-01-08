@@ -6,7 +6,7 @@ require("dotenv").config();
 const app = require('../../app');
 const { User } = require('../../models');
 
-const {DB_HOST, PORT} = process.env;
+const {DB_TEST_HOST, PORT} = process.env;
 
 describe("test login", () => {
     let server;
@@ -14,7 +14,7 @@ describe("test login", () => {
     afterAll(() => server.close());
 
     beforeEach((done)=> {
-        mongoose.connect(DB_HOST).then(()=> done())
+        mongoose.connect(DB_TEST_HOST).then(()=> done())
     })
 
     afterEach((done) => {
