@@ -13,7 +13,11 @@ const userSchema = new Schema({
   subscription: {
     type: String,
     enum: ["starter", "pro", "business"],
-    default: "starter"
+    default: "starter",
+  },
+  avatarURL: {
+    type: String,
+    required: true,
   },
   token: {
     type: String,
